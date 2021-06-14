@@ -19,7 +19,18 @@ model_version='@model_version@'
 
 import datetime
 import sys, os
-sys.path.insert(0, os.path.abspath(os.path.join(srcdir, '_ext')))
+
+# Build with maven
+def get_value(tag):
+    import xml.etree.ElementTree as ElementTree
+    tree = ElementTree.parse('../../pom.xml')
+    ns = {'maven': 'http://maven.apache.org/POM/4.0.0'}
+    version = tree.find('maven:version', ns).text
+    print(version)
+    return version.replace('-SNAPSHOT', '.dev0')
+
+model_version = get_value('maven:ome.model.schemaver')
+
 
 # -- General configuration -----------------------------------------------------
 
@@ -33,6 +44,11 @@ title = project + ' Documentation'
 release = 'UNKNOWN'
 version = 'UNKNOWN'
 
+release = get_value('maven:version')
+version = release
+
+
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -41,11 +57,6 @@ version = 'UNKNOWN'
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.)
 extensions = ['sphinx.ext.extlinks']
-
-# Configuration for the edit_on_github extension
-edit_on_github_project = 'ome/ome-model'
-edit_on_github_branch = 'master'
-
 
 
 # The suffix of source filenames.
