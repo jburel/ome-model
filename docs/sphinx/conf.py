@@ -40,14 +40,13 @@ version = 'UNKNOWN'
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.)
-extensions = ['sphinx.ext.extlinks', 'edit_on_github']
+extensions = ['sphinx.ext.extlinks']
 
 # Configuration for the edit_on_github extension
 edit_on_github_project = 'ome/ome-model'
 edit_on_github_branch = 'master'
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = [os.path.abspath(os.path.join(srcdir, '_templates'))]
+
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -280,9 +279,6 @@ html_last_updated_fmt = '%b %d, %Y'
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
 #html_use_smartypants = True
-
-# Custom sidebar templates, maps document names to template names.
-html_sidebars = { '**' : ['pagetoc.html', 'relations.html', 'searchbox.html', 'sourcelink.html'] }
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
