@@ -22,9 +22,8 @@ def get_value(tag):
     import xml.etree.ElementTree as ElementTree
     tree = ElementTree.parse('../../pom.xml')
     ns = {'mv': 'http://maven.apache.org/POM/4.0.0'}
-    version = tree.getroot().find(tag, ns).text
-    print(version)
-    return version.replace('-SNAPSHOT', '.dev0')
+    value = tree.getroot().find(tag, ns).text
+    return value.replace('-SNAPSHOT', '.dev0')
 
 model_version = get_value('mv:properties/mv:ome.model.schemaver')
 
@@ -38,9 +37,6 @@ title = project + ' Documentation'
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
-release = 'UNKNOWN'
-version = 'UNKNOWN'
-
 release = get_value('mv:version')
 version = release
 
