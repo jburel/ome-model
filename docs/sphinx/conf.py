@@ -13,9 +13,6 @@
 # serve to show the default.
 
 # Substitutions from external build system.
-srcdir = '@sphinx_srcdir@'
-builddir = '@sphinx_builddir@'
-model_version='@model_version@'
 
 import datetime
 import sys, os
@@ -24,12 +21,12 @@ import sys, os
 def get_value(tag):
     import xml.etree.ElementTree as ElementTree
     tree = ElementTree.parse('../../pom.xml')
-    ns = {'maven': 'http://maven.apache.org/POM/4.0.0'}
-    version = tree.find('maven:version', ns).text
+    ns = {'mv': 'http://maven.apache.org/POM/4.0.0'}
+    version = tree.getroot().find(tag, ns).text
     print(version)
     return version.replace('-SNAPSHOT', '.dev0')
 
-model_version = get_value('maven:ome.model.schemaver')
+model_version = get_value('mv:properties/mv:ome.model.schemaver')
 
 
 # -- General configuration -----------------------------------------------------
@@ -44,7 +41,7 @@ title = project + ' Documentation'
 release = 'UNKNOWN'
 version = 'UNKNOWN'
 
-release = get_value('maven:version')
+release = get_value('mv:version')
 version = release
 
 
@@ -137,8 +134,6 @@ downloads_root = 'https://downloads.openmicroscopy.org'
 help_root = 'http://help.openmicroscopy.org'
 docs_root = 'https://docs.openmicroscopy.org'
 
-# Edit on GitHub prefix
-edit_on_github_prefix = 'docs/sphinx'
 
 extlinks = {
     # Trac links
@@ -260,7 +255,7 @@ html_theme_options = {
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [os.path.abspath(os.path.join(srcdir, 'themes'))]
+#html_theme_path = [os.path.abspath(os.path.join(., 'themes'))]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -271,7 +266,7 @@ html_theme_path = [os.path.abspath(os.path.join(srcdir, 'themes'))]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = os.path.abspath(os.path.join(srcdir, 'images/ome.svg'))
+html_logo = os.path.abspath(os.path.join('.', 'images/ome.svg'))
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
