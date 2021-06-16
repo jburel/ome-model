@@ -9,3 +9,7 @@ build
 dist
 ome_model.egg-info
 ome_model/__init__.py
+*.classpath
+*.project
+*.settings
+*_build
