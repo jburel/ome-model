@@ -2,6 +2,7 @@
 
 [![Build Status](https://github.com/ome/ome-model/workflows/Maven/badge.svg)](https://github.com/ome/ome-model/actions)
 [![Build Status](https://github.com/ome/ome-model/workflows/Tox/badge.svg)](https://github.com/ome/ome-model/actions)
+[![Build Status](https://github.com/ome/omero-model/workflows/sphinx/badge.svg)](https://github.com/ome/omero-model/actions) 
 [![Maven Central](https://img.shields.io/maven-central/v/org.openmicroscopy/ome-xml.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.openmicroscopy%22%20AND%20a%3A%22ome-xml%22)
 [![Javadocs](http://javadoc.io/badge/org.openmicroscopy/ome-xml.svg)](http://javadoc.io/doc/org.openmicroscopy/ome-xml) 
 [![PyPI](https://badge.fury.io/py/ome-model.svg)](https://pypi.org/project/ome-model/)
